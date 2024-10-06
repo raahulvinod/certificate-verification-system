@@ -15,8 +15,6 @@ const Signup = () => {
         values
       );
 
-      console.log(response);
-
       if (response.status === 201) {
         toast.success('Signup successful!');
         navigate('/admin-login');
