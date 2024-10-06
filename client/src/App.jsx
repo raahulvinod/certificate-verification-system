@@ -9,12 +9,14 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Footer from './components/Footer';
 import Dashboard from './pages/Dashboard';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [userAuth, setUserAuth] = useState();
 
   return (
     <UserContext.Provider value={{ userAuth, setUserAuth }}>
+      <Toaster />
       <Navbar />
       <Routes>
         <Route path="/" element={<Outlet />}>
