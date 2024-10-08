@@ -81,3 +81,28 @@ export const uploadStudentData = async (req, res) => {
     return res.status(500).json({ message: `Error: ${error.message}` });
   }
 };
+
+// Retrieve Certificate
+export const retrieveCertificate = async (req, res) => {
+  const { certificateId } = req.params;
+
+  try {
+    const student = await Student.findOne({ certificateId });
+
+    if (!student) {
+      return res.status(404).json({ message: 'Certificate not found.' });
+    }
+
+    res.status(200).json({
+      certificateId: student.certificateId,
+      studentName: student.studentName,
+      internshipDomain: student.internshipDomain,
+      startingDate: student.startingDate,
+      endingDate: student.endingDate,
+    });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: `Error retrieving certificate: ${error.message}` });
+  }
+};
