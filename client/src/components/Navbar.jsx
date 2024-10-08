@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBarsStaggered, FaXmark } from 'react-icons/fa6';
 
-import { removeFromSession } from '../utils/sessions';
+import { lookInSession, removeFromSession } from '../utils/sessions';
 import ProfileDropdown from './ProfileDropdown';
 import { UserContext } from '../context/UserContext';
 
@@ -10,7 +10,17 @@ const Navbar = () => {
   const { userAuth, setUserAuth } = useContext(UserContext);
   const [isMenuOpen, setisMenuOpen] = useState(false);
 
-  console.log(userAuth);
+  useEffect(() => {
+    const storedUser = JSON.parse(lookInSession('user'));
+    const storedToken = lookInSession('token');
+
+    if (storedUser && storedToken) {
+      setUserAuth({
+        ...storedUser,
+        access_token: storedToken,
+      });
+    }
+  }, []);
 
   const handleMenuToggler = () => {
     setisMenuOpen(!isMenuOpen);
