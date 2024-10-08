@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import connectDb from './config/dbConnect.js';
 import userRoutes from './routes/user.route.js';
+import studentRoutes from './routes/student.route.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', userRoutes);
+app.use('/api/students', studentRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running at PORT ${PORT}`);

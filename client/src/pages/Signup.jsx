@@ -11,7 +11,7 @@ const Signup = () => {
   const handleSignup = async (values) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_DOMAIN}/signup`,
+        `${import.meta.env.VITE_SERVER_DOMAIN}/users/signup`,
         values
       );
 

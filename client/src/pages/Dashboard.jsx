@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FaBars, FaUpload, FaCertificate, FaHome } from 'react-icons/fa';
 import UploadField from '../components/UploadField';
+import toast from 'react-hot-toast';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('upload');
@@ -19,14 +20,20 @@ const Dashboard = () => {
       formData.append('file', file);
 
       try {
-        const response = await axios.post('/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        setUploadStatus('Upload successful!');
+        const response = await axios.post(
+          `${import.meta.env.VITE_SERVER_DOMAIN}/students/upload`,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
+        setUploadStatus('Upload successfull');
+        toast.success('Upload successfull.');
         console.log('Upload successful', response.data);
       } catch (error) {
+        toast.error(error.response.data.message);
         setUploadStatus('Upload failed. Please try again.');
         console.error('Upload failed', error);
       }

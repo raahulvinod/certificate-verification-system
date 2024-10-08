@@ -35,7 +35,7 @@ const Login = () => {
   const handleLogin = async (values) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_DOMAIN}/login`,
+        `${import.meta.env.VITE_SERVER_DOMAIN}/users/login`,
         values
       );
 
