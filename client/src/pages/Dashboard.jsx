@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { FaBars, FaUpload, FaCertificate, FaHome } from 'react-icons/fa'; // Importing icons
+import axios from 'axios';
+import { FaBars, FaUpload, FaCertificate, FaHome } from 'react-icons/fa';
 import UploadField from '../components/UploadField';
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('upload'); // Default tab
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // State to toggle sidebar
+  const [activeTab, setActiveTab] = useState('upload');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [uploadStatus, setUploadStatus] = useState('');
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -16,25 +18,32 @@ const Dashboard = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      console.log(file);
-
-      // try {
-      //   const response = await axios.post('/api/upload', formData, {
-      //     headers: {
-      //       'Content-Type': 'multipart/form-data',
-      //     },
-      //   });
-      //   console.log('Upload successful', response.data);
-      // } catch (error) {
-      //   console.error('Upload failed', error);
-      // }
+      try {
+        const response = await axios.post('/api/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        setUploadStatus('Upload successful!');
+        console.log('Upload successful', response.data);
+      } catch (error) {
+        setUploadStatus('Upload failed. Please try again.');
+        console.error('Upload failed', error);
+      }
     }
   };
 
   const renderContent = () => {
     switch (activeTab) {
       case 'upload':
-        return <UploadField handleFileChange={handleFileChange} />;
+        return (
+          <div>
+            <UploadField handleFileChange={handleFileChange} />
+            {uploadStatus && (
+              <p className="mt-4 text-red-500">{uploadStatus}</p>
+            )}
+          </div>
+        );
       case 'viewCertificates':
         return (
           <div className="p-6">
@@ -50,7 +59,6 @@ const Dashboard = () => {
               Welcome to the student portal. Here you can access your data, view
               reports, and manage your certificates.
             </p>
-            {/* Add more content here for the student portal */}
           </div>
         );
       default:
@@ -66,13 +74,11 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen flex">
-      {/* Sidebar */}
       <div
         className={`bg-gray-800 text-white ${
           isSidebarOpen ? 'w-64' : 'w-20'
         } transition-all duration-300`}
       >
-        {/* Toggle Button for mobile */}
         <div className="flex items-center justify-between px-4 py-3 bg-gray-900">
           <h1 className={`text-lg font-bold ${isSidebarOpen ? '' : 'hidden'}`}>
             Dashboard
@@ -112,7 +118,6 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 bg-gray-100 p-6">{renderContent()}</div>
     </div>
   );
