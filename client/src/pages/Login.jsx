@@ -48,12 +48,11 @@ const Login = () => {
       storeInSession('user', JSON.stringify(response.data.user));
 
       setUserAuth({
-        ...data.user,
-        access_token: data.token,
+        ...response.data.user,
+        access_token: response.data.token,
       });
     } catch (error) {
       console.error('Error logged in:', error.message);
-      toast.error(error.response.data.message);
     }
   };
 

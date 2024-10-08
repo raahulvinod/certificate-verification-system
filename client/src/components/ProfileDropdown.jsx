@@ -37,7 +37,7 @@ const ProfileDropdown = ({ fullname, handleLogout }) => {
             <ul className="space-y-3 dark:text-white">
               <li className="font-medium">
                 <Link
-                  to="/profile"
+                  to="/dashboard"
                   className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700"
                 >
                   <div className="mr-3">
@@ -56,7 +56,7 @@ const ProfileDropdown = ({ fullname, handleLogout }) => {
                       ></path>
                     </svg>
                   </div>
-                  Profile
+                  Dashboard
                 </Link>
               </li>
               <li className="font-medium">

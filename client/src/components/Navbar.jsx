@@ -10,15 +10,17 @@ const Navbar = () => {
   const { userAuth, setUserAuth } = useContext(UserContext);
   const [isMenuOpen, setisMenuOpen] = useState(false);
 
+  console.log(userAuth);
+
   const handleMenuToggler = () => {
     setisMenuOpen(!isMenuOpen);
   };
 
   // Handle logout
   const handleLogout = () => {
-    // removeFromSession('user');
-    // removeFromSession('token');
-    // setUserAuth({ access_token: null });
+    removeFromSession('user');
+    removeFromSession('token');
+    setUserAuth({ access_token: null });
   };
 
   const navItems = [
@@ -37,7 +39,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-2">
             <img
               className="w-10 h-10"
-              src="https://logodix.com/logo/1861206.png" // University Logo
+              src="https://logodix.com/logo/1861206.png"
               alt="University Logo"
             />
             <h1 className="text-2xl font-bold text-blue-800">Certify</h1>
