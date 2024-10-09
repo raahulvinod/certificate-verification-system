@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CertificateRetrieval from '../components/CertificateRetrival';
 import { Certificate } from '../components/Certificate';
-import Cert from '../components/cert';
+
 import Modal from '../components/Modal';
 
 const Home = () => {
@@ -15,9 +15,6 @@ const Home = () => {
 
   const handleShowModal = () => {
     setShowModal(true);
-    // if (certificateData) {
-    //   setShowModal(true);
-    // }
   };
 
   return (
