@@ -1,6 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
+import CertificateRetrieval from '../components/CertificateRetrival';
+import { Certificate } from '../components/Certificate';
+import Cert from '../components/cert';
 
 const Home = () => {
+  const [certificateData, setCertificateData] = useState(null);
   return (
     <div className="font-sans">
       <div className="mt-12 flex flex-col items-center justify-center py-6 px-4">
@@ -23,48 +27,13 @@ const Home = () => {
               </a>
             </p>
           </div>
-
-          <div className="max-w-md md:ml-auto w-full bg-gray-100 p-6 rounded-lg shadow-md">
-            <form>
-              <h3 className="text-gray-800 text-3xl mb-8 font-normal">
-                Student Login
-              </h3>
-
-              <div className="space-y-4">
-                <div>
-                  <input
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="bg-white w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
-                    placeholder="Email address"
-                  />
-                </div>
-                <div>
-                  <input
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                    className="bg-white w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
-                    placeholder="Password"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <button
-                  type="button"
-                  className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
-                >
-                  Log in
-                </button>
-              </div>
-            </form>
-          </div>
+          <CertificateRetrieval
+            certificateData={certificateData}
+            setCertificateData={setCertificateData}
+          />
         </div>
       </div>
+      {certificateData && <Certificate certificateData={certificateData} />}
     </div>
   );
 };

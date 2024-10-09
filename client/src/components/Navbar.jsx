@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const navItems = [
     { path: '/', title: 'Home' },
-    { path: '/courses', title: 'Courses' },
+    { path: '/certificate', title: 'Certificate' },
     { path: '/faculty', title: 'Faculty' },
     { path: '/admissions', title: 'Admissions' },
     { path: '/about', title: 'About Us' },
