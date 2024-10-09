@@ -46,6 +46,7 @@ const Home = () => {
             certificateData={certificateData}
             setCertificateData={setCertificateData}
             onShowModal={handleShowModal}
+            onCloseModal={handleCloseModal}
           />
         </div>
       </div>

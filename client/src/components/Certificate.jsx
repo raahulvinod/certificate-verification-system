@@ -6,8 +6,6 @@ import Polygon1 from '../assets/Polygon1';
 import signature from '../assets/signature.png';
 
 export const Certificate = ({ certificateData, onClose }) => {
-  // Check if certificateData is available
-
   return (
     <div className="relative w-[1000px] h-[600px] bg-gradient-to-br from-white to-[#FFEADC] rounded-[20px]">
       <button
@@ -68,11 +66,11 @@ export const Certificate = ({ certificateData, onClose }) => {
             <p className="text-sm">Advisory Board Member</p>
           </div>
 
-          <div className="absolute left-[420px] top-[560px] w-[185.89px] h-[39px] bg-[#F42A40] rounded-[14px] flex items-center justify-center">
+          <button className="absolute left-[420px] top-[560px] w-[185.89px] h-[39px] bg-[#F42A40] rounded-[14px] flex items-center justify-center">
             <p className="text-xl font-semibold text-white font-['Raleway']">
               Download
             </p>
-          </div>
+          </button>
 
           <div className="absolute left-[175px] top-[110px] w-[60.68px] h-[60.68px] bg-[#2CA4C6] rounded-full" />
           <div className="absolute left-[188px] top-[150px] w-[34.8px] h-[57.11px] bg-[#2CA4C6]" />
@@ -84,7 +82,7 @@ export const Certificate = ({ certificateData, onClose }) => {
         <div className="flex items-center justify-center h-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-10 animate-spin fill-orange-300 block mx-auto"
+            className="w-10 animate-spin fill-orange-300 block mx-auto"
             viewBox="0 0 24 24"
           >
             <path

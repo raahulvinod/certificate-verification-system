@@ -3,7 +3,11 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const CertificateRetrieval = ({ setCertificateData, onShowModal }) => {
+const CertificateRetrieval = ({
+  setCertificateData,
+  onShowModal,
+  onCloseModal,
+}) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -25,12 +29,13 @@ const CertificateRetrieval = ({ setCertificateData, onShowModal }) => {
             values.certificateId
           }`
         );
+
         setCertificateData(response.data);
         setErrorMessage('');
-        onShowModal();
       } catch (error) {
         setErrorMessage(error.response?.data?.message || 'An error occurred');
         setCertificateData(null);
+        onCloseModal();
       } finally {
         setLoading(false);
       }
