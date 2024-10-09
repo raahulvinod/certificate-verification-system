@@ -52,14 +52,14 @@ const Navbar = () => {
               src="https://logodix.com/logo/1861206.png"
               alt="University Logo"
             />
-            <h1 className="text-2xl font-bold text-blue-800">Certify</h1>
+            <h1 className="text-2xl font-bold text-[#a91079]">CertiTrack</h1>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="text-blue-800 focus:outline-none"
+              className="text-[#a91079] focus:outline-none"
               onClick={handleMenuToggler}
             >
               {isMenuOpen ? (
@@ -78,8 +78,8 @@ const Navbar = () => {
                 to={path}
                 className={({ isActive }) =>
                   isActive
-                    ? 'text-blue-800 font-semibold border-b-2 border-blue-800'
-                    : 'text-gray-700 hover:text-blue-600 transition duration-200'
+                    ? 'text-[#a91079] font-semibold border-b-2 border-[#a91079]'
+                    : 'text-gray-700 hover:text-[#a91079] transition duration-200'
                 }
               >
                 {title}
@@ -108,7 +108,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="bg-blue-800 text-white py-5 px-4 rounded-md lg:hidden">
+          <div className="bg-[#a91079] text-white py-5 px-4 rounded-md lg:hidden">
             <ul className="flex flex-col space-y-4">
               {navItems.map(({ path, title }) => (
                 <li key={path}>
@@ -119,7 +119,7 @@ const Navbar = () => {
                         ? 'font-semibold text-yellow-300'
                         : 'text-white transition duration-200 hover:text-yellow-200'
                     }
-                    onClick={() => setisMenuOpen(false)} // Close menu on link click
+                    onClick={() => setisMenuOpen(false)}
                   >
                     {title}
                   </NavLink>
@@ -137,10 +137,10 @@ const Navbar = () => {
                   </li>
                   <li>
                     <Link
-                      to="/profile"
+                      to="/dashboard"
                       className="text-white transition duration-200 hover:text-yellow-200"
                     >
-                      Profile
+                      Dashboard
                     </Link>
                   </li>
                 </>
