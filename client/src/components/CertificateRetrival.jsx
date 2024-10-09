@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Certificate } from './Certificate';
 
-const CertificateRetrieval = ({
-  certificateData,
-  setCertificateData,
-  onShowModal,
-}) => {
+const CertificateRetrieval = ({ setCertificateData, onShowModal }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -23,6 +18,7 @@ const CertificateRetrieval = ({
     }),
     onSubmit: async (values) => {
       setLoading(true);
+      onShowModal();
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_SERVER_DOMAIN}/students/certificate/${
@@ -79,7 +75,7 @@ const CertificateRetrieval = ({
             <button
               type="submit"
               className="text-white bg-[#a91079] hover:bg-[#a91079e2] tracking-wide rounded-lg text-sm px-4 py-3 flex items-center justify-center w-full !mt-6"
-              disabled={loading} // Disable the button when loading
+              disabled={loading}
             >
               {loading ? (
                 <span>Loading...</span>

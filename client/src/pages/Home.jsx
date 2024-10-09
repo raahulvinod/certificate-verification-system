@@ -9,16 +9,15 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleCloseModal = () => {
-    console.log('close');
     setShowModal(false);
     setCertificateData(null);
   };
 
   const handleShowModal = () => {
-    console.log('show');
-    if (certificateData) {
-      setShowModal(true);
-    }
+    setShowModal(true);
+    // if (certificateData) {
+    //   setShowModal(true);
+    // }
   };
 
   return (
