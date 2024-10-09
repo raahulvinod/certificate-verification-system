@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function MaterialSymbolsCheckSmallRounded() {
   return (
-    <div className="absolute w-[57px] h-[57px] left-[399px] top-[259px]">
+    <div className="absolute w-[57px] h-[57px] left-[178px] top-[110px]">
       <svg
         width="100%"
         height="100%"

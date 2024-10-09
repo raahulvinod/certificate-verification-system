@@ -2,9 +2,25 @@ import { useState } from 'react';
 import CertificateRetrieval from '../components/CertificateRetrival';
 import { Certificate } from '../components/Certificate';
 import Cert from '../components/cert';
+import Modal from '../components/Modal';
 
 const Home = () => {
   const [certificateData, setCertificateData] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    console.log('close');
+    setShowModal(false);
+    setCertificateData(null);
+  };
+
+  const handleShowModal = () => {
+    console.log('show');
+    if (certificateData) {
+      setShowModal(true);
+    }
+  };
+
   return (
     <div className="font-sans">
       <div className="mt-12 flex flex-col items-center justify-center py-6 px-4">
@@ -30,10 +46,18 @@ const Home = () => {
           <CertificateRetrieval
             certificateData={certificateData}
             setCertificateData={setCertificateData}
+            onShowModal={handleShowModal}
           />
         </div>
       </div>
-      {certificateData && <Certificate certificateData={certificateData} />}
+      {showModal && (
+        <Modal onClose={handleCloseModal}>
+          <Certificate
+            certificateData={certificateData}
+            onClose={handleCloseModal}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Polygon1() {
   return (
-    <div className="w-9 absolute h-[30px] left-[409.51px] top-[334.63px]">
+    <div className="w-9 absolute h-[30px] left-[188px] top-[180px]">
       <svg
         width="100%"
         height="100%"
