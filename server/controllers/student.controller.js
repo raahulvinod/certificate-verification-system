@@ -129,3 +129,26 @@ export const getAllStudents = async (req, res) => {
       .json({ message: `Error retrieving students: ${error.message}` });
   }
 };
+
+export const deleteStudent = async (req, res) => {
+  const { studentId } = req.params;
+
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied. Admins only.' });
+    }
+
+    const deletedStudent = await Student.findByIdAndDelete(studentId);
+
+    if (!deletedStudent) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    res.status(200).json({
+      message: 'Student deleted successfully',
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};

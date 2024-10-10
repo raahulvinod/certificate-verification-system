@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { UserContext } from '../context/UserContext';
+import ConfirmationModal from './ConfirmationModal';
+import toast from 'react-hot-toast';
 
 const Students = () => {
   const { userAuth } = useContext(UserContext);
@@ -8,6 +10,8 @@ const Students = () => {
   const [studentData, setstudentData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [studentToDelete, setStudentToDelete] = useState(null);
 
   // Fetch students data
   useEffect(() => {
@@ -48,9 +52,22 @@ const Students = () => {
       setstudentData((prevData) =>
         prevData.filter((student) => student._id !== studentId)
       );
+      setIsModalOpen(false);
+      toast.success('Student deleted successfully.');
     } catch (error) {
+      toast.error('Error deleting student.');
       console.error('Error deleting student:', error);
     }
+  };
+
+  const confirmDelete = (studentId) => {
+    setStudentToDelete(studentId);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setStudentToDelete(null);
   };
 
   return (
@@ -122,7 +139,7 @@ const Students = () => {
                       </button>
                       <button
                         title="Delete"
-                        onClick={() => handleDelete(student._id)}
+                        onClick={() => confirmDelete(student._id)}
                         className="text-red-500 hover:text-red-700 transition duration-150"
                       >
                         <svg
@@ -144,6 +161,15 @@ const Students = () => {
           <p className="text-gray-500">No students found.</p>
         )}
       </div>
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onConfirm={() => {
+          if (studentToDelete) {
+            handleDelete(studentToDelete);
+          }
+        }}
+      />
     </div>
   );
 };
