@@ -142,14 +142,19 @@ const Students = () => {
                     </td>
                     <td className="p-4 flex space-x-2">
                       <button
-                        title="Edit"
-                        className="text-blue-500 hover:text-blue-700 transition duration-150"
-                      ></button>
-                      <button
                         title="Delete"
                         onClick={() => confirmDelete(student._id)}
                         className="text-red-500 hover:text-red-700 transition duration-150"
-                      ></button>
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z" />
+                          <path d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z" />
+                        </svg>
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -164,8 +169,8 @@ const Students = () => {
                   onClick={() => handlePageChange(index + 1)}
                   className={`mx-1 px-4 py-2 border rounded ${
                     currentPage === index + 1
-                      ? 'bg-purple-700 text-white'
-                      : 'bg-white text-purple-700'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white text-blue-500'
                   }`}
                 >
                   {index + 1}
