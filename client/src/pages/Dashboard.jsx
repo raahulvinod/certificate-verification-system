@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { FaBars, FaUpload, FaCertificate, FaHome } from 'react-icons/fa';
 import UploadField from '../components/UploadField';
 import toast from 'react-hot-toast';
+import { UserContext } from '../context/UserContext';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('upload');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [uploadStatus, setUploadStatus] = useState('');
+
+  const { userAuth } = useContext(UserContext);
+  const access_token = userAuth?.access_token;
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -26,6 +30,7 @@ const Dashboard = () => {
           {
             headers: {
               'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${access_token}`,
             },
           }
         );

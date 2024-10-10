@@ -2,10 +2,15 @@ import jwt from 'jsonwebtoken';
 
 import User from '../model/user.model.js';
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '3d',
-  });
+const generateToken = (user) => {
+  return jwt.sign(
+    {
+      id: user._id,
+      role: user.role,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: '3d' }
+  );
 };
 
 export const signup = async (req, res) => {
@@ -26,7 +31,7 @@ export const signup = async (req, res) => {
     }
 
     const user = await User.create({ fullname, email, password, mobile });
-    const token = generateToken(user._id);
+    const token = generateToken(user);
     res.status(201).json({ token, user });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -48,7 +53,7 @@ export const login = async (req, res) => {
         .json({ message: 'You are not authorized to login' });
     }
 
-    const token = generateToken(user._id);
+    const token = generateToken(user);
     res.json({ token, user });
   } catch (error) {
     res.status(500).json({ message: error.message });

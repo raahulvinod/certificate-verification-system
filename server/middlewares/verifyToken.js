@@ -7,13 +7,16 @@ const verifyToken = async (req, res, next) => {
   if (token == null) {
     return res
       .status(401)
-      .json({ error: 'There is no token attached to header' });
+      .json({ error: 'There is no token attached to the header' });
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    req.user = decoded.id;
+    req.user = {
+      id: decoded.id,
+      role: decoded.role,
+    };
     next();
   } catch (error) {
     res.status(403).json({ error: 'Invalid access token.' });

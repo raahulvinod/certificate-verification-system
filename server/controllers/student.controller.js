@@ -1,7 +1,7 @@
-// student.controller.js
 import multer from 'multer';
 import xlsx from 'xlsx';
 import Student from '../model/student.model.js';
+import User from '../model/user.model.js';
 
 // Configure multer for file uploads (memory storage)
 const upload = multer({
@@ -32,6 +32,10 @@ const multerUpload = (req, res) => {
 // Upload Excel data and save to MongoDB
 export const uploadStudentData = async (req, res) => {
   try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied. Admins only.' });
+    }
+
     // Wait for multer to process the file upload
     await multerUpload(req, res);
 
@@ -54,7 +58,6 @@ export const uploadStudentData = async (req, res) => {
         endingDate,
       } = row;
 
-      // Validate required fields
       if (
         !certificateId ||
         !studentName ||
@@ -74,7 +77,6 @@ export const uploadStudentData = async (req, res) => {
       });
     });
 
-    // Insert the student data into MongoDB
     await Student.insertMany(students);
     return res.status(200).json({ message: 'Data uploaded successfully' });
   } catch (error) {
