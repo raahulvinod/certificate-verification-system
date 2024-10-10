@@ -108,3 +108,24 @@ export const retrieveCertificate = async (req, res) => {
       .json({ message: `Error retrieving certificate: ${error.message}` });
   }
 };
+
+// Retrieve all students - Admin only
+export const getAllStudents = async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied. Admins only.' });
+    }
+
+    const students = await Student.find();
+
+    if (students.length === 0) {
+      return res.status(404).json({ message: 'No students found.' });
+    }
+
+    res.status(200).json(students);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: `Error retrieving students: ${error.message}` });
+  }
+};

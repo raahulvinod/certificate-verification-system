@@ -4,6 +4,7 @@ import { FaBars, FaUpload, FaCertificate, FaHome } from 'react-icons/fa';
 import UploadField from '../components/UploadField';
 import toast from 'react-hot-toast';
 import { UserContext } from '../context/UserContext';
+import Students from '../components/Students';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('upload');
@@ -56,11 +57,11 @@ const Dashboard = () => {
             )}
           </div>
         );
-      case 'viewCertificates':
+      case 'viewStudents':
         return (
           <div className="p-6">
-            <h2 className="text-xl font-bold mb-4">View Certificates</h2>
-            {/* Add view certificates content here */}
+            <h2 className="text-xl font-bold mb-4">View Students</h2>
+            <Students />
           </div>
         );
       case 'studentPortal':
@@ -111,12 +112,12 @@ const Dashboard = () => {
           </li>
           <li
             className={`cursor-pointer hover:bg-gray-700 p-3 rounded flex items-center space-x-2 ${
-              activeTab === 'viewCertificates' ? 'bg-gray-700' : ''
+              activeTab === 'viewStudents' ? 'bg-gray-700' : ''
             }`}
-            onClick={() => setActiveTab('viewCertificates')}
+            onClick={() => setActiveTab('viewStudents')}
           >
             <FaCertificate size={20} />
-            {isSidebarOpen && <span>View Certificates</span>}
+            {isSidebarOpen && <span>View Students</span>}
           </li>
           <li
             className={`cursor-pointer hover:bg-gray-700 p-3 rounded flex items-center space-x-2 ${
