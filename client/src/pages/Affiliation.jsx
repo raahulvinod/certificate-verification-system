@@ -51,7 +51,7 @@ const Affiliation = () => {
               </h3>
               <p className="text-gray-700 mb-4">{college.description}</p>
               <a
-                href="/college-details" // Link to the college details page
+                href="/college-details"
                 className="mt-4 inline-block px-4 py-2 bg-[#a91079] text-white font-semibold rounded-lg shadow-md hover:bg-[#b12e95] transition duration-300"
               >
                 View Details

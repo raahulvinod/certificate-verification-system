@@ -66,7 +66,7 @@ const Faculty = () => {
             research opportunities, or mentorship.
           </p>
           <a
-            href="/contact" // Link to your contact page
+            href="/contact"
             className="px-6 py-2 bg-[#a91079] text-white font-semibold rounded-lg shadow-md hover:bg-[#b12e95] transition duration-300"
           >
             Contact Faculty
