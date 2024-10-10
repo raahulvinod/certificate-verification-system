@@ -94,13 +94,13 @@ const Navbar = () => {
                 handleLogout={handleLogout}
               />
             ) : (
-              <Link
+              <NavLink
                 to="/admin-login"
                 className="px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium border border-black outline-none bg-transparent hover:bg-black text-black hover:text-white transition-all duration-300"
                 role="button"
               >
                 Admin Login
-              </Link>
+              </NavLink>
             )}
           </div>
         </div>
@@ -150,12 +150,13 @@ const Navbar = () => {
                 </>
               ) : (
                 <li>
-                  <Link
+                  <NavLink
                     to="/admin-login"
                     className="text-white text-2xl transition duration-200 hover:text-yellow-200"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     Admin Login
-                  </Link>
+                  </NavLink>
                 </li>
               )}
             </ul>

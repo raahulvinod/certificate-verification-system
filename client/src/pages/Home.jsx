@@ -34,15 +34,6 @@ const Home = () => {
               issued by trusted institutions. CertiTrack ensures accuracy,
               security, and instant access to your verified records.
             </p>
-            <p className="text-sm mt-12 text-gray-800">
-              Already a student?{' '}
-              <a
-                href="/login"
-                className="text-blue-600 font-semibold hover:underline ml-1"
-              >
-                Log in to your account
-              </a>
-            </p>
           </div>
           <CertificateRetrieval
             certificateData={certificateData}
