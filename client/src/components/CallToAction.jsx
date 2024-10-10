@@ -8,7 +8,7 @@ const CallToAction = () => {
           <span className="rotate-90 inline-block mr-2">|</span> ALL IN ONE WITH
           CERTITRACK
         </p>
-        <h2 className="text-gray-800 md:text-5xl text-3xl font-extrabold md:!leading-[55px]">
+        <h2 className="text-gray-800 md:text-3xl text-xl font-extrabold md:!leading-[55px]">
           Elevate Your Certification Experience
         </h2>
         <div className="mt-8">
