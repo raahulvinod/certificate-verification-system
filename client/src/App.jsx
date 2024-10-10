@@ -11,6 +11,10 @@ import Dashboard from './pages/Dashboard';
 import { Toaster } from 'react-hot-toast';
 import ProtectedRoute from './utils/ProtectedRoute';
 import { lookInSession } from './utils/sessions';
+import About from './pages/About';
+import Admission from './pages/Admission';
+import Faculty from './pages/Faculty';
+import Affiliation from './pages/Affiliation';
 
 function App() {
   const [userAuth, setUserAuth] = useState();
@@ -24,6 +28,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Outlet />}>
           <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/admissions" element={<Admission />} />
+          <Route path="/faculty" element={<Faculty />} />
+          <Route path="/affliation" element={<Affiliation />} />
 
           <Route
             path="/admin-login"

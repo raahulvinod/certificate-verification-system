@@ -52,6 +52,7 @@ const Home = () => {
           />
         </Modal>
       )}
+
       <CallToAction />
       <Footer />
     </div>

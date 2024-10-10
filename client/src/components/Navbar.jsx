@@ -34,7 +34,7 @@ const Navbar = () => {
 
   const navItems = [
     { path: '/', title: 'Home' },
-    { path: '/certificate', title: 'Certificate' },
+    { path: '/affliation', title: 'Affiliation' },
     { path: '/faculty', title: 'Faculty' },
     { path: '/admissions', title: 'Admissions' },
     { path: '/about', title: 'About Us' },
@@ -51,7 +51,7 @@ const Navbar = () => {
               src="https://logodix.com/logo/1861206.png"
               alt="University Logo"
             />
-            <h1 className="text-2xl font-bold text-[#a91079]">CertiTrack</h1>
+            <h1 className="text-xl font-bold text-[#a91079]">CertiTrack</h1>
           </div>
 
           {/* Mobile Menu Button */}
