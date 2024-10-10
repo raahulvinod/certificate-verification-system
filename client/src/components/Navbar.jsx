@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBarsStaggered, FaXmark } from 'react-icons/fa6';
-
 import { lookInSession, removeFromSession } from '../utils/sessions';
 import ProfileDropdown from './ProfileDropdown';
 import { UserContext } from '../context/UserContext';
 
 const Navbar = () => {
   const { userAuth, setUserAuth } = useContext(UserContext);
-  const [isMenuOpen, setisMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const storedUser = JSON.parse(lookInSession('user'));
@@ -23,7 +22,7 @@ const Navbar = () => {
   }, []);
 
   const handleMenuToggler = () => {
-    setisMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   // Handle logout
@@ -108,18 +107,23 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="bg-[#a91079] text-white py-5 px-4 rounded-md lg:hidden">
-            <ul className="flex flex-col space-y-4">
+          <div className="fixed inset-0 bg-[#a91079] text-white z-50 transition-transform duration-300 ease-in-out transform translate-x-0">
+            <div className="flex justify-end p-4">
+              <button onClick={handleMenuToggler} className="text-white">
+                <FaXmark className="w-7 h-7" />
+              </button>
+            </div>
+            <ul className="flex flex-col items-center space-y-6 mt-16">
               {navItems.map(({ path, title }) => (
                 <li key={path}>
                   <NavLink
                     to={path}
                     className={({ isActive }) =>
                       isActive
-                        ? 'font-semibold text-yellow-300'
-                        : 'text-white transition duration-200 hover:text-yellow-200'
+                        ? 'font-semibold text-yellow-300 text-2xl'
+                        : 'text-white text-2xl transition duration-200 hover:text-yellow-200'
                     }
-                    onClick={() => setisMenuOpen(false)}
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {title}
                   </NavLink>
@@ -130,7 +134,7 @@ const Navbar = () => {
                   <li>
                     <button
                       onClick={handleLogout}
-                      className="text-white transition duration-200 hover:text-yellow-200"
+                      className="text-white text-2xl transition duration-200 hover:text-yellow-200"
                     >
                       Logout
                     </button>
@@ -138,7 +142,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/dashboard"
-                      className="text-white transition duration-200 hover:text-yellow-200"
+                      className="text-white text-2xl transition duration-200 hover:text-yellow-200"
                     >
                       Dashboard
                     </Link>
@@ -148,7 +152,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/admin-login"
-                    className="text-white transition duration-200 hover:text-yellow-200"
+                    className="text-white text-2xl transition duration-200 hover:text-yellow-200"
                   >
                     Admin Login
                   </Link>

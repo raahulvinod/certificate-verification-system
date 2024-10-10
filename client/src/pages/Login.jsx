@@ -84,7 +84,6 @@ const Login = () => {
                 className="py-2.5 px-4 text-sm font-semibold rounded-md text-blue-500 bg-blue-100 hover:bg-blue-200 focus:outline-none"
                 onClick={handleGoogleSignIn}
               >
-                {/* Google Sign-in Icon */}
                 Sign in with Google
               </button>
             </div>
@@ -121,6 +120,7 @@ const Login = () => {
                 <input
                   name="password"
                   type="password"
+                  autoComplete="current-password"
                   className={`w-full text-sm text-gray-800 border ${
                     formik.touched.password && formik.errors.password
                       ? 'border-red-500'

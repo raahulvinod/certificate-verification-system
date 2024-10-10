@@ -173,6 +173,7 @@ const Signup = () => {
                 <Field
                   name="password"
                   type="password"
+                  autoComplete="current-password"
                   className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-2 rounded-lg"
                   placeholder="Create a password"
                 />

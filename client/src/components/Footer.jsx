@@ -8,34 +8,22 @@ const Footer = () => {
 
         <ul className="flex space-x-6 gap-y-2 max-lg:justify-center flex-wrap">
           <li>
-            <a
-              href="javascript:void(0)"
-              className="text-[15px] hover:text-white"
-            >
+            <a href="/" className="text-[15px] hover:text-white">
               Academic Calendar
             </a>
           </li>
           <li>
-            <a
-              href="javascript:void(0)"
-              className="text-[15px] hover:text-white"
-            >
+            <a href="/" className="text-[15px] hover:text-white">
               Student Handbook
             </a>
           </li>
           <li>
-            <a
-              href="javascript:void(0)"
-              className="text-[15px] hover:text-white"
-            >
+            <a href="/" className="text-[15px] hover:text-white">
               Admissions
             </a>
           </li>
           <li>
-            <a
-              href="javascript:void(0)"
-              className="text-[15px] hover:text-white"
-            >
+            <a href="/" className="text-[15px] hover:text-white">
               Contact Us
             </a>
           </li>
